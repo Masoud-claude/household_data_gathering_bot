@@ -198,6 +198,16 @@ SOURCES: List[Source] = [
         extra_keywords=["equifax", "credit bureau", "credit score", "delinquency"],
     ),
     Source(
+        name="TransUnion Canada",
+        category="Research",
+        url="https://www.transunion.ca",
+        feeds=[
+            "https://newsroom.transunion.com/rss/newsreleases",
+        ],
+        extra_keywords=["transunion", "credit report", "credit health", "delinquency rate",
+                        "consumer credit", "credit demand"],
+    ),
+    Source(
         name="CPA Canada",
         category="Research",
         url="https://www.cpacanada.ca",
