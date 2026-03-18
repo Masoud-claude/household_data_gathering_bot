@@ -38,7 +38,7 @@ logging.basicConfig(
     level=getattr(logging, LOG_LEVEL, logging.INFO),
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler("data/bot.log", encoding="utf-8"),
+        logging.FileHandler("/app/data/bot.log", encoding="utf-8")"),
     ],
 )
 
