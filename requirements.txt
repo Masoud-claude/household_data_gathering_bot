@@ -1,0 +1,16 @@
+# Core
+python-telegram-bot==20.7
+anthropic==0.40.0
+
+# Scheduling
+APScheduler==3.10.4
+
+# Feed parsing & HTTP
+feedparser==6.0.11
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.1
+
+# Utilities
+python-dotenv==1.0.1
+pytz==2024.1
