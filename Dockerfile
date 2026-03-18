@@ -35,7 +35,6 @@ COPY main.py .
 RUN mkdir -p /app/data
 
 # Declare the volume for database + log persistence
-VOLUME ["/app/data"]
 
 # Non-root user for security
 RUN useradd -m -u 1000 botuser && chown -R botuser:botuser /app
