@@ -35,7 +35,10 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
     level=getattr(logging, LOG_LEVEL, logging.INFO),
-    handlers=[logging.StreamHandler(sys.stdout)],
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler("/app/data/bot.log", encoding="utf-8"),
+    ],
 )
 
 # Silence noisy third-party loggers
