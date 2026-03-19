@@ -39,8 +39,6 @@ GLOBAL_KEYWORDS = [
     "credit bureau", "equifax", "transunion",
     # Tax
     "tax", "tax return", "benefit", "CRA", "GST", "HST",
-    # Surveys / reports
-    "survey", "poll", "report", "study", "index", "data release",
     # Generational
     "millennial", "gen z", "boomer", "generation",
 ]

@@ -38,10 +38,13 @@ Content:
 {content}
 
 ---
-Summarise the above in 3–5 bullet points. Each bullet must:
-• Start with a specific data point or key finding (include % or $ figures if available)
-• Be a single sentence
-• Relate to Canadian households, consumers, or personal finances
+Summarise the above in 3–5 bullet points for a Canadian fintech founder.
+
+Rules:
+• Each bullet is a single sentence starting with "•"
+• If the article contains consumer/household data, lead with specific figures (%, $, sample size)
+• If the article is regulatory or policy-focused (no consumer data), summarise the key policy changes and their implications for fintech products or consumers
+• Always produce a useful summary — never refuse or ask for different content
 
 Format: plain text bullet points starting with "•"
 """
