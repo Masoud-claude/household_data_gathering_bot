@@ -17,7 +17,6 @@ import asyncio
 import logging
 import os
 import sys
-from pathlib import Path
 
 from dotenv import load_dotenv
 from telegram import BotCommand
@@ -26,11 +25,8 @@ from telegram.ext import Application, CommandHandler
 # Load environment variables from .env file (dev convenience)
 load_dotenv()
 
-# Ensure data directory exists before any file handlers are created
-Path("data").mkdir(exist_ok=True)
-
 # --------------------------------------------------------------------------- #
-#  Logging                                                                     #
+#  Logging  (stdout only — Railway/Docker captures this natively)             #
 # --------------------------------------------------------------------------- #
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").upper()
@@ -98,6 +94,10 @@ async def run_startup_poll(application: Application) -> None:
 def main() -> None:
     _validate_env()
     logger.info("Starting Canadian Household Financial Data Bot")
+
+    # Ensure data directory exists (for SQLite DB); volume is mounted by now
+    import pathlib
+    pathlib.Path("data").mkdir(exist_ok=True)
 
     # Initialise database
     from bot.database import init_db
