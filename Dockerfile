@@ -31,10 +31,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY bot/ ./bot/
 COPY main.py .
 
-# Create persistent data directory
-RUN mkdir -p /app/data
-
-# Declare the volume for database + log persistence
+# Create persistent data directory with open permissions so Railway's
+# root-owned volume mount is still writable by the non-root botuser
+RUN mkdir -p /app/data && chmod 777 /app/data
 
 # Non-root user for security
 RUN useradd -m -u 1000 botuser && chown -R botuser:botuser /app
