@@ -26,14 +26,3 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-```
-
-4. Click **"Commit changes"**
-
----
-
-## Step 3: Test It
-
-Go to any issue or PR in your repo and comment:
-```
-@claude hello, are you there?
