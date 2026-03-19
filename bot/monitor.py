@@ -71,7 +71,7 @@ def _extract_tags(text: str) -> str:
     for tag, keywords in TOPIC_TAGS.items():
         if any(kw.lower() in lower for kw in keywords):
             matched.append(tag)
-    return " ".join(matched) if matched else "#general"
+    return " ".join(matched) if matched else ""
 
 
 # ------------------------------------------------------------------ #
@@ -181,8 +181,11 @@ async def _process_feed(source: Source, feed_url: str) -> List[dict]:
         # Parse date
         published = _parse_date(entry)
 
-        # Extract topic tags
+        # Extract topic tags — skip articles that match no specific topic
         tags = _extract_tags(combined_text)
+        if not tags:
+            logger.debug("Filtered out (no topic match): %s", title[:80])
+            continue
 
         # Summarise with Claude
         logger.info("Summarising: %s", title[:80])
