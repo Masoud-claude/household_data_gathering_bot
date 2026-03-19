@@ -142,10 +142,11 @@ def main() -> None:
                 "Scheduler started. Next feed poll: %s",
                 scheduler.get_job("poll_feeds").next_run_time,
             )
-            await run_startup_poll(application)
             await application.start()
             await application.updater.start_polling(drop_pending_updates=True)
             logger.info("Bot is running. Press Ctrl+C to stop.")
+            # Run startup poll in background so the bot is already responsive
+            asyncio.create_task(run_startup_poll(application))
             # Keep running until interrupted
             try:
                 await asyncio.Event().wait()
