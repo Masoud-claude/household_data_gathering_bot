@@ -126,7 +126,7 @@ def format_sources_list() -> str:
         f"🏛️ <b>Government & Regulatory ({len(gov_sources)})</b>\n{_list(gov_sources)}\n\n"
         f"🔬 <b>Research & Non-Governmental ({len(research_sources)})</b>\n{_list(research_sources)}\n\n"
         f"📰 <b>Media & Aggregators ({len(media_sources)})</b>\n{_list(media_sources)}\n\n"
-        f"<i>Feeds polled every 6 hours. New Canadian household financial data delivered automatically.</i>"
+        f"<i>Feeds polled every 24 hours. New Canadian household financial data delivered automatically.</i>"
     )
 
 
@@ -153,7 +153,7 @@ def format_welcome() -> str:
         "<b>Available tags:</b>\n"
         "<code>#debt #housing #savings #inflation #income #credit "
         "#sentiment #tax #retirement #banking #generational #investment</code>\n\n"
-        "⏰ <i>Feeds checked every 6 hours. Weekly digest auto-sent every Monday morning.</i>"
+        "⏰ <i>Feeds checked every 24 hours. Weekly digest auto-sent every Monday morning.</i>"
     )
 
 
