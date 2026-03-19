@@ -90,7 +90,7 @@ def setup_scheduler(application: Application) -> AsyncIOScheduler:
     # Poll every 6 hours
     scheduler.add_job(
         poll_feeds_job,
-        trigger=IntervalTrigger(hours=6),
+        trigger=IntervalTrigger(hours=24),
         id="poll_feeds",
         name="Poll RSS Feeds",
         kwargs={"application": application},
