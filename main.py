@@ -26,6 +26,9 @@ from telegram.ext import Application, CommandHandler
 # Load environment variables from .env file (dev convenience)
 load_dotenv()
 
+# Ensure data directory exists before any file handlers are created
+Path("data").mkdir(exist_ok=True)
+
 # --------------------------------------------------------------------------- #
 #  Logging                                                                     #
 # --------------------------------------------------------------------------- #
@@ -94,10 +97,6 @@ async def run_startup_poll(application: Application) -> None:
 
 def main() -> None:
     _validate_env()
-
-    # Ensure data directory exists before logging starts writing
-    Path("data").mkdir(exist_ok=True)
-
     logger.info("Starting Canadian Household Financial Data Bot")
 
     # Initialise database
