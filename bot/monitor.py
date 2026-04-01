@@ -7,10 +7,11 @@ new items.
 """
 
 import logging
-import time
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from typing import List, Optional, Tuple
+
+import asyncio
 
 import feedparser
 import requests
@@ -146,7 +147,7 @@ async def poll_all_sources() -> List[dict]:
             items = await _process_feed(source, feed_url)
             new_items.extend(items)
             # Be polite between requests
-            time.sleep(1)
+            await asyncio.sleep(1)
 
     logger.info("Poll complete. %d new items found.", len(new_items))
     return new_items

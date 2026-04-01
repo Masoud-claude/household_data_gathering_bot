@@ -9,6 +9,7 @@ Jobs:
 """
 
 import logging
+from datetime import datetime, timedelta, timezone
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -87,16 +88,18 @@ def setup_scheduler(application: Application) -> AsyncIOScheduler:
     """
     scheduler = AsyncIOScheduler(timezone="America/Toronto")
 
-    # Poll every 6 hours
+    # Poll every 24 hours; first run 2 minutes after startup so Railway
+    # container restarts don't indefinitely defer the initial fetch.
     scheduler.add_job(
         poll_feeds_job,
         trigger=IntervalTrigger(hours=24),
         id="poll_feeds",
         name="Poll RSS Feeds",
         kwargs={"application": application},
+        next_run_time=datetime.now(timezone.utc) + timedelta(minutes=2),
         max_instances=1,
-        coalesce=True,          # skip missed runs on restart
-        misfire_grace_time=600, # 10 min grace period
+        coalesce=True,
+        misfire_grace_time=600,
     )
 
     # Weekly digest every Monday at 08:00 Eastern Time
